@@ -1,18 +1,18 @@
 :root {
-  /* 無印風:溫潤紙感米色 + 柔和大地色 */
-  --bg: #F1EADD;
-  --bg2: #E7DECC;
-  --card: #FBF7ED;
-  --card2: #F0E8D7;
-  --line: #DBD0BB;
-  --text: #47403A;
-  --muted: #928979;
-  --brand: #B47352;
-  --brand2: #CCA45E;
-  --accent: #7E8A6A;
-  --danger: #B15C48;
+  /* 無印風提亮版:乾淨暖米白 + 溫暖陶土 */
+  --bg: #F8F2E5;
+  --bg2: #F1E7D4;
+  --card: #FFFDF6;
+  --card2: #F6EEDE;
+  --line: #E4DAC6;
+  --text: #453E34;
+  --muted: #9A9078;
+  --brand: #CE7C46;
+  --brand2: #E2B058;
+  --accent: #849066;
+  --danger: #C45E42;
   --ok: #7E9A5E;
-  --shadow: 0 12px 34px rgba(74, 62, 48, .16);
+  --shadow: 0 12px 32px rgba(96, 78, 56, .15);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -22,7 +22,7 @@
 html, body {
   height: 100%;
   background:
-    radial-gradient(1200px 600px at 50% -10%, #FAF5EA 0%, transparent 60%),
+    radial-gradient(1200px 600px at 50% -10%, #FFFBF0 0%, transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",

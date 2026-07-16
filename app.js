@@ -8,19 +8,14 @@
   const CUR_KEY = 'eatwhat.current.v1';
   const TAU = Math.PI * 2;
 
-  // 輪盤配色(無印風大地色系,低彩度、依序循環)
+  // 輪盤配色:同一個暖色調的深淺兩階,交錯排列(乾淨、不雜亂)
   const PALETTE = [
-    '#C58A63', // 陶土
-    '#A0A56C', // 橄欖
-    '#D8B87C', // 麥色
-    '#8BA6AD', // 霧藍
-    '#C39385', // 藕色
-    '#9DAE86', // 苔綠
-    '#B69B72', // 卡其
-    '#7E9E96', // 霧綠松
-    '#CB9E76', // 焦糖奶
-    '#A9AE93', // 灰綠
+    '#DB8B52', // 陶土(深)
+    '#F3DAB2', // 奶茶(淺)
   ];
+
+  // 綜合輪盤:每個主題最多取幾樣(避免格子太多太密)。想更多/更少就改這個數字。
+  const MIX_PER_THEME = 4;
 
   /* ---------- 資料層 ---------- */
   // localStorage 存的覆寫資料:
@@ -66,11 +61,11 @@
     return list;
   }
 
-  // 綜合主題 = 所有主題食物混合去重
+  // 綜合主題 = 各主題各取前幾樣,混合去重(格數不會太多)
   function buildMix(themes) {
     const seen = new Set();
     const items = [];
-    themes.forEach((t) => t.items.forEach((it) => {
+    themes.forEach((t) => t.items.slice(0, MIX_PER_THEME).forEach((it) => {
       const k = it.trim();
       if (k && !seen.has(k)) { seen.add(k); items.push(k); }
     }));
