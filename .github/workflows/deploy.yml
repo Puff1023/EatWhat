@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 每次部署自動把 sw.js 的版本號換成這次的 commit 編號,
+      # 讓瀏覽器一定會抓到最新內容(自動更新的關鍵)。
+      - name: Bump service worker cache version
+        run: |
+          BUILD="${GITHUB_SHA::7}-${GITHUB_RUN_NUMBER}"
+          sed -i "s/__BUILD__/${BUILD}/g" sw.js
+          echo "Service worker version: ${BUILD}"
+
+      - name: Disable Jekyll
+        run: touch .nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

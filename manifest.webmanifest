@@ -1,0 +1,32 @@
+{
+  "name": "今天吃什麼",
+  "short_name": "吃什麼",
+  "description": "煩惱吃什麼?轉一下輪盤讓命運決定!飯類、麵類、午餐、晚餐等各種主題輪盤。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1327",
+  "theme_color": "#ff6b35",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

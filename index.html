@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <title>今天吃什麼 🍽️</title>
+  <meta name="description" content="煩惱吃什麼?轉一下輪盤讓命運決定!飯類、麵類、午餐、晚餐等各種主題輪盤。" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#ff6b35" />
+
+  <!-- iOS 加到主畫面 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="吃什麼" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="logo">今天吃什麼</h1>
+      <button id="editBtn" class="icon-btn" title="編輯食物" aria-label="編輯食物">✏️</button>
+    </header>
+
+    <!-- 主題選擇 -->
+    <nav id="themeTabs" class="theme-tabs" aria-label="主題選擇"></nav>
+
+    <!-- 輪盤 -->
+    <main class="stage">
+      <div class="wheel-wrap">
+        <div class="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" width="640" height="640"></canvas>
+        <button id="spinBtn" class="spin-center" aria-label="開始轉動">GO</button>
+      </div>
+
+      <div id="result" class="result" role="status" aria-live="polite">
+        <span class="result-hint">點下方按鈕,決定你的一餐 👇</span>
+      </div>
+
+      <button id="spinBtnBig" class="spin-big">🎯 轉一下!</button>
+    </main>
+
+    <footer class="foot">
+      <span id="itemCount" class="count"></span>
+      <button id="installBtn" class="link-btn" hidden>📲 加到主畫面</button>
+    </footer>
+  </div>
+
+  <!-- 編輯面板 -->
+  <div id="editSheet" class="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <div class="sheet-panel">
+      <div class="sheet-head">
+        <h2 id="editTitle">編輯食物</h2>
+        <button class="icon-btn" data-close aria-label="關閉">✕</button>
+      </div>
+
+      <div class="sheet-body">
+        <div class="edit-theme-meta">
+          <label>主題名稱
+            <input id="themeNameInput" type="text" maxlength="10" />
+          </label>
+          <label>圖示
+            <input id="themeEmojiInput" type="text" maxlength="4" />
+          </label>
+        </div>
+
+        <div class="add-row">
+          <input id="addItemInput" type="text" placeholder="輸入食物,按新增" maxlength="20" />
+          <button id="addItemBtn" class="btn primary">＋ 新增</button>
+        </div>
+
+        <ul id="itemList" class="item-list"></ul>
+      </div>
+
+      <div class="sheet-foot">
+        <button id="deleteThemeBtn" class="btn danger">刪除此主題</button>
+        <button id="resetThemeBtn" class="btn ghost">還原預設</button>
+        <button id="saveEditBtn" class="btn primary">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增主題面板 -->
+  <div id="newThemeSheet" class="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <div class="sheet-panel small">
+      <div class="sheet-head">
+        <h2>新增主題</h2>
+        <button class="icon-btn" data-close aria-label="關閉">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="edit-theme-meta">
+          <label>主題名稱
+            <input id="newThemeName" type="text" maxlength="10" placeholder="例如:宵夜" />
+          </label>
+          <label>圖示
+            <input id="newThemeEmoji" type="text" maxlength="4" placeholder="🌙" />
+          </label>
+        </div>
+      </div>
+      <div class="sheet-foot">
+        <button class="btn ghost" data-close>取消</button>
+        <button id="createThemeBtn" class="btn primary">建立</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

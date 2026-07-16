@@ -1,0 +1,5 @@
+# 文字檔一律用 LF,確保部署時(Linux)行為一致
+* text=auto eol=lf
+
+# 圖示是二進位檔,不要做行尾轉換
+*.png binary
