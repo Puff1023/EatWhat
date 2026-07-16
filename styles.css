@@ -1,17 +1,18 @@
 :root {
-  --bg: #1a1327;
-  --bg2: #241a35;
-  --card: #2d2140;
-  --card2: #372a4d;
-  --line: #48395f;
-  --text: #f5f0ff;
-  --muted: #b3a5c9;
-  --brand: #ff6b35;
-  --brand2: #ffb02e;
-  --accent: #7c5cff;
-  --danger: #ff5471;
-  --ok: #2fd07f;
-  --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  /* 無印風:溫潤紙感米色 + 柔和大地色 */
+  --bg: #F1EADD;
+  --bg2: #E7DECC;
+  --card: #FBF7ED;
+  --card2: #F0E8D7;
+  --line: #DBD0BB;
+  --text: #47403A;
+  --muted: #928979;
+  --brand: #B47352;
+  --brand2: #CCA45E;
+  --accent: #7E8A6A;
+  --danger: #B15C48;
+  --ok: #7E9A5E;
+  --shadow: 0 12px 34px rgba(74, 62, 48, .16);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -21,7 +22,7 @@
 html, body {
   height: 100%;
   background:
-    radial-gradient(1200px 600px at 50% -10%, #3a2a55 0%, transparent 60%),
+    radial-gradient(1200px 600px at 50% -10%, #FAF5EA 0%, transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
@@ -96,7 +97,7 @@ body { display: flex; justify-content: center; }
   color: #fff;
   border-color: transparent;
   background: linear-gradient(135deg, var(--brand), var(--brand2));
-  box-shadow: 0 6px 18px rgba(255, 107, 53, .35);
+  box-shadow: 0 6px 16px rgba(180, 115, 82, .32);
 }
 .tab.add-tab { color: var(--accent); font-weight: 700; }
 
@@ -120,7 +121,7 @@ body { display: flex; justify-content: center; }
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: var(--shadow), inset 0 0 0 8px rgba(255,255,255,.06);
+  box-shadow: var(--shadow), inset 0 0 0 6px rgba(255,255,255,.4);
   background: var(--card);
 }
 .pointer {
@@ -132,21 +133,21 @@ body { display: flex; justify-content: center; }
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
   border-top: 26px solid var(--brand);
-  filter: drop-shadow(0 3px 4px rgba(0,0,0,.5));
+  filter: drop-shadow(0 3px 4px rgba(74,62,48,.35));
   z-index: 3;
 }
 .spin-center {
   position: absolute;
   width: 74px; height: 74px;
   border-radius: 50%;
-  border: 4px solid #fff;
+  border: 4px solid var(--card);
   background: linear-gradient(135deg, var(--brand), var(--brand2));
   color: #fff;
   font-size: 20px;
   font-weight: 900;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+  box-shadow: 0 6px 18px rgba(74,62,48,.28);
   z-index: 2;
   transition: transform .1s;
 }
@@ -184,7 +185,7 @@ body { display: flex; justify-content: center; }
   color: #fff;
   cursor: pointer;
   background: linear-gradient(135deg, var(--brand), var(--brand2));
-  box-shadow: 0 10px 26px rgba(255,107,53,.4);
+  box-shadow: 0 10px 24px rgba(180,115,82,.34);
   transition: transform .1s, box-shadow .2s;
 }
 .spin-big:active { transform: translateY(2px) scale(.99); }
@@ -216,7 +217,7 @@ body { display: flex; justify-content: center; }
 .sheet[hidden] { display: none; }
 .sheet-backdrop {
   position: absolute; inset: 0;
-  background: rgba(0,0,0,.55);
+  background: rgba(60,50,38,.42);
   backdrop-filter: blur(2px);
   animation: fade .2s;
 }
@@ -313,7 +314,7 @@ input[type="text"]:focus { outline: 2px solid var(--accent); border-color: trans
 .btn:active { transform: scale(.96); }
 .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand2)); color: #fff; }
 .btn.ghost { background: var(--card); color: var(--text); border: 1px solid var(--line); }
-.btn.danger { background: rgba(255,84,113,.15); color: var(--danger); border: 1px solid rgba(255,84,113,.4); }
+.btn.danger { background: rgba(177,92,72,.12); color: var(--danger); border: 1px solid rgba(177,92,72,.36); }
 
 /* 大螢幕微調 */
 @media (min-height: 720px) {

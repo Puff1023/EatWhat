@@ -8,10 +8,18 @@
   const CUR_KEY = 'eatwhat.current.v1';
   const TAU = Math.PI * 2;
 
-  // 輪盤配色(暖色系,依序循環)
+  // 輪盤配色(無印風大地色系,低彩度、依序循環)
   const PALETTE = [
-    '#ff6b35', '#ffb02e', '#f94892', '#7c5cff', '#2fd07f',
-    '#ff8c5a', '#4ec5f1', '#ffd23f', '#e85d75', '#5aa9e6',
+    '#C58A63', // 陶土
+    '#A0A56C', // 橄欖
+    '#D8B87C', // 麥色
+    '#8BA6AD', // 霧藍
+    '#C39385', // 藕色
+    '#9DAE86', // 苔綠
+    '#B69B72', // 卡其
+    '#7E9E96', // 霧綠松
+    '#CB9E76', // 焦糖奶
+    '#A9AE93', // 灰綠
   ];
 
   /* ---------- 資料層 ---------- */
@@ -137,9 +145,9 @@
     const n = items.length;
 
     if (n === 0) {
-      ctx.fillStyle = '#2d2140';
+      ctx.fillStyle = '#ECE3D1';
       ctx.beginPath(); ctx.arc(cx, cy, r, 0, TAU); ctx.fill();
-      ctx.fillStyle = '#b3a5c9';
+      ctx.fillStyle = '#928979';
       ctx.font = `600 ${Math.max(14, size * 0.05)}px sans-serif`;
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText('這裡還沒有食物', cx, cy - 12);
@@ -162,7 +170,7 @@
       ctx.closePath();
       ctx.fillStyle = pickColor(i, n);
       ctx.fill();
-      ctx.strokeStyle = 'rgba(0,0,0,.12)';
+      ctx.strokeStyle = 'rgba(255,255,255,.28)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -171,7 +179,7 @@
       ctx.rotate(a0 + seg / 2);
       ctx.textAlign = 'right';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#241a35';
+      ctx.fillStyle = '#413A31';
       const fs = fontSizeFor(items[i], n, size);
       ctx.font = `700 ${fs}px sans-serif`;
       const label = fitText(items[i], n);
@@ -183,7 +191,7 @@
     // 中心圓底
     ctx.beginPath();
     ctx.arc(cx, cy, size * 0.16, 0, TAU);
-    ctx.fillStyle = '#241a35';
+    ctx.fillStyle = '#4A433A';
     ctx.fill();
   }
 
